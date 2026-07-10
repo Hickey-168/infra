@@ -11,6 +11,8 @@
 - [atlas/original-mindmap-review.md](/Users/youyu/workspace/python/infra/atlas/original-mindmap-review.md): 对 `naixu.png` 中 infra 分支的查缺补漏和修正。
 - [templates/learning-item.md](/Users/youyu/workspace/python/infra/templates/learning-item.md): 每个叶子节点的统一笔记/实验模板。
 - [templates/experiment-note.md](/Users/youyu/workspace/python/infra/templates/experiment-note.md): 单次实验记录模板。
+- [atlas/p0-learning-map.md](/Users/youyu/workspace/python/infra/atlas/p0-learning-map.md): P0 主干如何由基础一路连接到 FSDP2。
+- [atlas/learning-artifact-contract.md](/Users/youyu/workspace/python/infra/atlas/learning-artifact-contract.md): 教程、实验、个人笔记、闭卷问题如何分工。
 
 ## Learning Domains
 

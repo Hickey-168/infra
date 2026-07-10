@@ -1,6 +1,7 @@
 # Local editors
 .idea/
 .vscode/
+.obsidian/
 
 # Python
 __pycache__/

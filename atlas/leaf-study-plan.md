@@ -11,6 +11,7 @@
 | 文件 | 谁写 | 作用 |
 |---|---|---|
 | `README.md` | 脚本生成 | 叶子索引卡（路径、代码形态、完成标准） |
+| `tutorial.md` | AI curriculum | 预先由 AI 编写的课程：机制、依赖、资料入口、预测和实验顺序；脚手架不会生成它 |
 | `note.md` | **我亲手写** | 费曼式笔记，实例化 `templates/learning-item.md`。唯一必须我自己总结的文件 |
 | `questions.md` | AI 出题、我作答 | 盲点自测五维题（边界/实现/性能/跨概念/数量级） |
 | 代码文件 | AI + 我 | 领域自适应，见下 |
@@ -19,28 +20,28 @@
 
 不搞「一刀切全用 notebook」，因为分布式要多进程、CUDA 要编译、部署是声明式。脚本 `tools/scaffold_leaf.py` 的 `DOMAIN_CODE_KIND` 表决定形态：
 
-| 领域 | 形态 | 文件 | 理由 |
-|---|---|---|---|
-| fundamentals / triton / attention / fusion / 多数 inference / training 概念 / rec | `notebook` | `lab.ipynb` | 交互探索、图文混排 |
-| cuda / compiler / data-pipeline / checkpointing / frameworks / serving-api / storage / tooling | `script` | `lab.py` + `run.sh` | 需编译/多进程/可 diff |
-| distributed-training / communication / distributed-inference | `distributed` | `lab.py`(torchrun) + `run.sh` | 多进程 rank/collective |
-| deployment | `config` | `manifest.yaml` + `run.sh` | 声明式 K8s/serving |
-| profiling / metrics / load-testing / regression | `bench` | `bench.py` + `run.sh` + `results/` | 强制 warmup/多次测量/单位 |
+| 领域                                                                                             | 形态            | 文件                                 | 理由                  |
+| ---------------------------------------------------------------------------------------------- | ------------- | ---------------------------------- | ------------------- |
+| fundamentals / triton / attention / fusion / 多数 inference / training 概念 / rec                  | `notebook`    | `lab.ipynb`                        | 交互探索、图文混排           |
+| cuda / compiler / data-pipeline / checkpointing / frameworks / serving-api / storage / tooling | `script`      | `lab.py` + `run.sh`                | 需编译/多进程/可 diff      |
+| distributed-training / communication / distributed-inference                                   | `distributed` | `lab.py`(torchrun) + `run.sh`      | 多进程 rank/collective |
+| deployment                                                                                     | `config`      | `manifest.yaml` + `run.sh`         | 声明式 K8s/serving     |
+| profiling / metrics / load-testing / regression                                                | `bench`       | `bench.py` + `run.sh` + `results/` | 强制 warmup/多次测量/单位   |
 
-预览某领域形态：`python tools/scaffold_leaf.py --list-domain operators/triton`
+预览某领域形态：`python3 tools/scaffold_leaf.py --list-domain operators/triton`
 
 ## 用法
 
 ```bash
 cd /Users/youyu/workspace/python/infra
 # 开始学一个叶子（按需生成文件，已存在则跳过）
-python tools/scaffold_leaf.py operators/triton/vector-add
+python3 tools/scaffold_leaf.py operators/triton/vector-add
 # 覆盖重建
-python tools/scaffold_leaf.py <leaf> --force
+python3 tools/scaffold_leaf.py <leaf> --force
 ```
 
-然后交给 AI：说「按 infra-leaf-study 学 operators/triton/vector-add」，AI 会跑 5 阶段闭环：
-诊断 → 精读（填 note.md 因果链）→ 重构（填定位/知识图）→ 实践（跑代码验证）→ 盲点扫描（填 questions.md）。
+学习顺序固定为：`tutorial.md` → 写下预测 → `lab.*` → `note.md` → `questions.md`。
+完整所有权规则见 [learning-artifact-contract.md](/Users/youyu/workspace/python/infra/atlas/learning-artifact-contract.md)。
 
 ## 完成标准
 

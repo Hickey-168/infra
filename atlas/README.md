@@ -16,3 +16,5 @@
 - [priority-ladder.md](/Users/youyu/workspace/python/infra/atlas/priority-ladder.md): 优先级梯度。
 - [original-mindmap-review.md](/Users/youyu/workspace/python/infra/atlas/original-mindmap-review.md): 原脑图 review。
 - [sources.md](/Users/youyu/workspace/python/infra/atlas/sources.md): 当前路线图参考的 primary-ish sources。
+- [p0-learning-map.md](/Users/youyu/workspace/python/infra/atlas/p0-learning-map.md): P0 主干的依赖图、平台与验证证据。
+- [learning-artifact-contract.md](/Users/youyu/workspace/python/infra/atlas/learning-artifact-contract.md): 教程、实验、个人笔记和闭卷问题的所有权边界。
