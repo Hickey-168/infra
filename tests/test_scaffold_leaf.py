@@ -61,6 +61,8 @@ class ScaffoldLeafTest(unittest.TestCase):
                 scaffold_leaf.TEMPLATE_LEARNING = original_template
 
             self.assertFalse((temp_root / new_leaf_rel / "tutorial.md").exists())
+            self.assertFalse((temp_root / new_leaf_rel / "lesson.md").exists())
+            self.assertFalse((temp_root / new_leaf_rel / "review.md").exists())
 
 
 if __name__ == "__main__":

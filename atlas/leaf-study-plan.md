@@ -12,8 +12,10 @@
 |---|---|---|
 | `README.md` | 脚本生成 | 叶子索引卡（路径、代码形态、完成标准） |
 | `tutorial.md` | AI curriculum | 预先由 AI 编写的课程：机制、依赖、资料入口、预测和实验顺序；脚手架不会生成它 |
+| `lesson.md` | AI curriculum | 课程正文：自包含机制讲解、例子、推导、实验课和通关条件；脚手架不会生成它 |
 | `note.md` | **我亲手写** | 费曼式笔记，实例化 `templates/learning-item.md`。唯一必须我自己总结的文件 |
 | `questions.md` | AI 出题、我作答 | 盲点自测五维题（边界/实现/性能/跨概念/数量级） |
+| `review.md` | AI curriculum | 讨论后按复习视角写的完整沉淀；只有产生稳定讨论结论时由 AI 创建 |
 | 代码文件 | AI + 我 | 领域自适应，见下 |
 
 ## 代码文件形态（按领域自适应）
@@ -40,7 +42,7 @@ python3 tools/scaffold_leaf.py operators/triton/vector-add
 python3 tools/scaffold_leaf.py <leaf> --force
 ```
 
-学习顺序固定为：`tutorial.md` → 写下预测 → `lab.*` → `note.md` → `questions.md`。
+学习顺序固定为：`tutorial.md`（导学）→ `lesson.md`（课程正文）→ 写下预测 → `lab.*` → `note.md` → `questions.md`。
 完整所有权规则见 [learning-artifact-contract.md](/Users/youyu/workspace/python/infra/atlas/learning-artifact-contract.md)。
 
 ## 完成标准

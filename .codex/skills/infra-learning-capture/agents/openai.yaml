@@ -1,0 +1,4 @@
+interface:
+  display_name: "Infra Learning Capture"
+  short_description: "Capture durable AI infra learning into this repository."
+  default_prompt: "Use $infra-learning-capture to distill durable AI infra learning from this discussion into the repository."
