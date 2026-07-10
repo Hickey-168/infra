@@ -1,0 +1,43 @@
+# Local editors
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+
+# Experiment artifacts
+experiments/**/artifacts/
+experiments/**/*.jsonl
+experiments/**/*.csv
+experiments/**/*.parquet
+experiments/**/*.arrow
+experiments/**/*.trace
+experiments/**/*.nsys-rep
+experiments/**/*.qdrep
+experiments/**/*.sqlite
+
+# Model and checkpoint artifacts
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+checkpoints/
+models/
+wandb/
+runs/
+
+# Logs
+*.log
+logs/
+
