@@ -31,7 +31,22 @@ Use the narrowest durable home. Read the existing file before editing and preser
 | Cross-domain dependency, priority change, route correction | `atlas/` |
 | Personal wording, a wrong prediction, reflection, learner's final answer | `note.md` - never write this automatically |
 
-For an existing P0 leaf, maintain the two-layer course boundary: `tutorial.md` is the short导学; `lesson.md` is the self-contained course. Do not replace a course with a link list.
+For an existing P0 leaf, maintain the two-layer course boundary: `tutorial.md` is the short导学; `lesson.md` is the primary, self-contained knowledge input. Do not replace a course with a link list, a summary, or a list of questions.
+
+## Lesson Quality Gate
+
+Treat `lesson.md` as the material the learner reads to acquire the topic before any lab. It must be substantial enough to learn from without first searching the web.
+
+Before writing or accepting a lesson, verify that it:
+
+1. Introduces every prerequisite term needed for the lesson rather than naming it as unexplained background.
+2. Builds one continuous causal explanation from problem -> naive failure -> mechanism -> trade-offs.
+3. Includes at least one worked numerical, tensor-shape, state-transition, or code example that is explained line by line at the relevant abstraction level.
+4. States invariants, common wrong mental models, and boundary conditions in the body of the explanation.
+5. Gives a concrete reading-to-lab bridge: what the learner should predict, what code they will run, what output means, and what the experiment cannot prove.
+6. Contains all explanation needed for the named learning objective. Put official documentation, papers, and source code at the end as verification or extension material, never as a substitute for the missing explanation.
+
+Do not emit a lesson that merely says “learn X”, lists formulas without deriving their variables, or asks questions before supplying the underlying knowledge. When a current lesson fails this gate, replace it with a complete course chapter rather than appending another outline.
 
 ## Ensure The Leaf Exists First
 

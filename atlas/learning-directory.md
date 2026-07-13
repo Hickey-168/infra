@@ -170,6 +170,7 @@
 - `learning-rate-scheduler`: 学习率调度策略。
 - `gradient-clipping`: 梯度裁剪防爆炸。
 - `training-loop-state-machine`: 训练循环的状态机。
+- `training-hyperparameters`: global batch、sequence length、learning rate、weight decay、warmup 与 accumulation 如何共同改变训练循环、资源和优化轨迹。
 
 ### `training/memory` 训练显存
 

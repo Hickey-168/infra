@@ -1,6 +1,6 @@
 ---
-leaf: fundamentals/pytorch-tensor-lifecycle/shape-dtype-device
-title: shape dtype device
+leaf: fundamentals/autograd-graph-and-saved-tensors/grad-fn-chain
+title: grad fn chain
 status: in_progress   # planned | in_progress | verified
 priority: P?          # P0/P1/P2/P3, 见 atlas/priority-ladder.md
 domain: fundamentals
@@ -10,15 +10,16 @@ prereq: []            # 依赖的其它叶子路径
 unlocks: []           # 本叶子解锁的下游叶子
 ---
 
-# shape dtype device
+# grad fn chain
 
 ## One-Sentence Positioning
 
-Pytorch的基本张量概念，包含了三要素，shape(形状),dtype(数据类型),device(存储位置)
+<它解决什么问题，位于 LLM/AI infra 生命周期的哪个位置。>
 
 ## Priority
 
-- Priority: P0
+- Priority: P0/P1/P2/P3
+- Domain: inference/training/operators/communication/...
 - Environment: Mac / WSL2-GPU / remote GPU
 
 ## Knowledge Map

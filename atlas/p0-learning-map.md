@@ -2,6 +2,8 @@
 
 P0 不是框架功能清单，而是理解 AI infra 的共同语言。每个节点都有 `tutorial.md`（导学）与 `lesson.md`（课程正文）；这里仅回答“先学什么、为何相连、在哪台机器验证”。
 
+**路线修正：** 不可从 shape/dtype/device 直接跳到 parameter-memory。必须先建立“模型如何前向、loss 如何反向、参数何时更新、超参如何改变训练”的前置闭环；完成下表后，才进入原表的 parameter-memory（原表第 2 行）和后续系统主线。
+
 ```mermaid
 flowchart LR
     A[张量形状、类型与设备] --> B[训练显存账本]
@@ -19,6 +21,20 @@ flowchart LR
 ```
 
 `training/memory/activation-memory` 与 CUDA 分支并行学习：它提供 FSDP 所需的状态生命周期和峰值显存语言。
+
+## P0-0：训练闭环前置（必须先完成）
+
+| 顺序 | 叶子材料 | 解决的问题 | 环境 |
+|---:|---|---|---|
+| 1 | [Transformer 前向导学](/Users/youyu/workspace/python/infra/inference/lifecycle/transformer-forward-shapes/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/inference/lifecycle/transformer-forward-shapes/lesson.md) | token ids 如何经过模型变成 logits；训练和生成如何消费它 | Mac |
+| 2 | [训练状态机导学](/Users/youyu/workspace/python/infra/training/single-gpu-loop/training-loop-state-machine/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/training/single-gpu-loop/training-loop-state-machine/lesson.md) | forward、inference、loss、backward、step、zero_grad 的完整顺序 | Mac |
+| 3 | [forward/backward 导学](/Users/youyu/workspace/python/infra/training/single-gpu-loop/forward-backward-step/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/training/single-gpu-loop/forward-backward-step/lesson.md) | loss 为什么产生 `.grad`，为什么不直接更新参数 | Mac |
+| 4 | [autograd 图导学](/Users/youyu/workspace/python/infra/fundamentals/autograd-graph-and-saved-tensors/grad-fn-chain/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/fundamentals/autograd-graph-and-saved-tensors/grad-fn-chain/lesson.md) | `grad_fn`、leaf、saved tensors 和梯度传播 | Mac |
+| 5 | [optimizer 导学](/Users/youyu/workspace/python/infra/training/single-gpu-loop/optimizer-step/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/training/single-gpu-loop/optimizer-step/lesson.md) | SGD/AdamW 如何改变 parameter，state 在哪产生 | Mac |
+| 6 | [训练超参导学](/Users/youyu/workspace/python/infra/training/single-gpu-loop/training-hyperparameters/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/training/single-gpu-loop/training-hyperparameters/lesson.md) | batch、T、lr、weight decay、accumulation 的因果关系 | Mac |
+| 7 | [学习率调度导学](/Users/youyu/workspace/python/infra/training/single-gpu-loop/learning-rate-scheduler/tutorial.md) / [课程](/Users/youyu/workspace/python/infra/training/single-gpu-loop/learning-rate-scheduler/lesson.md) | warmup/decay 与 update step、恢复训练的关系 | Mac |
+
+完成 P0-0 后，回到下表的 `parameter-memory`；`shape-dtype-device` 仍是所有课程的共同前置，需要时回看其课程正文。
 
 | 顺序 | 叶子教程 | 本次要学会的机制 | 验证环境 | 完成后进入 |
 |---:|---|---|---|---|

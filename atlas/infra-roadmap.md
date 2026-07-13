@@ -17,6 +17,20 @@
 
 这条线把 张量、GPU、算子、推理、通信、分布式训练 串起来。
 
+### P0-0：先补齐训练闭环
+
+在进入 `parameter-memory` 前，先完成以下叶子。它们解释“模型如何产生 logits、loss 如何变成梯度、谁更新参数、超参怎样影响循环”；没有这段，显存账本会变成无意义的名词表。
+
+1. `inference/lifecycle/transformer-forward-shapes`
+2. `training/single-gpu-loop/training-loop-state-machine`
+3. `training/single-gpu-loop/forward-backward-step`
+4. `fundamentals/autograd-graph-and-saved-tensors/grad-fn-chain`
+5. `training/single-gpu-loop/optimizer-step`
+6. `training/single-gpu-loop/training-hyperparameters`
+7. `training/single-gpu-loop/learning-rate-scheduler`
+
+每个叶子的导学和课程正文见 [p0-learning-map.md](/Users/youyu/workspace/python/infra/atlas/p0-learning-map.md)。
+
 | 顺序 | 路径 | 为什么学 | 验证方式 |
 |---|---|---|---|
 | 1 | `fundamentals/pytorch-tensor-lifecycle` | 后面所有 shape/layout/state 分析的前置知识。 | view/reshape/transpose/contiguous 的 stride 实验。`Mac` |
