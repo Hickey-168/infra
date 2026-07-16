@@ -605,6 +605,7 @@
 - `listwise-ranking`: listwise 排序。
 - `feature-crossing`: 特征交叉。
 - `calibration`: 打分校准。
+- `weight-norm-regularization`: 用权重范数约束排序/召回模型的复杂度，连接 L1/L2、weight decay 与 embedding 打分。
 
 ### `retrieval-recommendation/reranking` 重排
 

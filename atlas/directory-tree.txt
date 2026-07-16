@@ -434,6 +434,7 @@ retrieval-recommendation/ranking/feature-crossing
 retrieval-recommendation/ranking/listwise-ranking
 retrieval-recommendation/ranking/pairwise-ranking
 retrieval-recommendation/ranking/pointwise-ranking
+retrieval-recommendation/ranking/weight-norm-regularization
 retrieval-recommendation/reranking
 retrieval-recommendation/reranking/cross-encoder-rerank
 retrieval-recommendation/reranking/late-interaction-colbert
